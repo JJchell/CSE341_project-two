@@ -6,9 +6,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function grab_info()
+    {
+      console.log('checkout run');
+      $.ajax({
+        url: '/info',
+        type: 'GET',
+        dataType: 'json', //will parse json into javascript object
+        //callback called when suceed
+        success: (data) => {
+          console.log('ajax success!', data);
+            player ="";
+
+          $.each(data, function (index, value) {
+            player += "<h2>";
+            player += this.player_name;
+            player += ", ";
+            player += this.realm;
+            player += "</h2>";
+          });// END LOOP
+          $('#results').html(player)
+        }//sucess data call
+      });//ajax function call
+      //CART CLICK AJAX END
+    }//cartPopup on click
+
+    </script>
 </head>
 <body>
-    <form action="results.php" method="post">
+    <form action="" method="post">
         <h2>Please choose the information you want to see.</h2>
         <div class="checkbox">
           <label><input type="checkbox" value="player_name">Player Name</label>
@@ -31,6 +59,8 @@
         <div class="checkbox">
             <label><input type="checkbox" value="second_prof">Second Professions</label>
           </div>
+          <input type="button" value="results" class="getBtn" onclick="grab_info()">
       </form>
+      <div id="results"></div>
 </body>
 </html>
