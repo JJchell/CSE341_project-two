@@ -2,3 +2,8 @@ body {
 	background-image: url("images/4.jpeg");
 	background-color: lightgray;
 }
+
+.results {
+    text-align: center;
+
+}
