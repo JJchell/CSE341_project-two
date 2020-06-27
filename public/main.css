@@ -3,7 +3,7 @@ body {
 	background-color: lightgray;
 }
 
-.results {
+#results {
     text-align: center;
 
 }
