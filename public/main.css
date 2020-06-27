@@ -1,5 +1,8 @@
 body {
-	background-image: url("images/4.jpeg");
+    background-image: url("images/4.jpeg");
+    background-repeat: no-repeat;
+    max-width: 100% !important;
+	height: auto !important;
 	background-color: lightgray;
 }
 
