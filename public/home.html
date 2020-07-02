@@ -68,8 +68,25 @@
           <label><input type="checkbox" value="first_prof">First Professions</label>
         </div>
         <div class="checkbox">
-            <label><input type="checkbox" value="second_prof">Second Professions</label>
-          </div>
+          <label><input type="checkbox" value="second_prof">Second Professions</label>
+        </div>
+
+        <label for="professions">Choose a Profession:</label>
+
+<select name="professions" id="professions">
+  <option value="herbalism">Herbalism</option>
+  <option value="mining">Mining</option>
+  <option value="skinning">Skinning</option>
+  <option value="alchemy">Alchemy</option>
+  <option value="blacksmithing">Blacksmithing</option>
+  <option value="enchanting">Enchanting</option>
+  <option value="engineering">Engineering</option>
+  <option value="inscription">Inscription</option>
+  <option value="jewelcrafting">Jewelcrafting</option>
+  <option value="leatherworking">Leatherworking</option>
+  <option value="tailoring">Tailoring</option>
+</select>
+
           <input type="button" value="results" class="getBtn" onclick="grab_info()">
       </form>
       <div id="results"></div>
