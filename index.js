@@ -19,7 +19,6 @@ function queryInfo(request, response) {
 	// First get the person's id
 	// const id = request.query.id;
 const id=0;
-	// TODO: We should really check here for a valid id before continuing on...
 
 	// use a helper function to query the DB, and provide a callback for when it's done
 	getPersonFromDb(id, function(error, result) {
