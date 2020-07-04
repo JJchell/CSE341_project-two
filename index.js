@@ -12,16 +12,17 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/info', queryInfo)
+  .get('/prof',queryProf)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 function queryInfo(request, response) {
-	// First get the person's id
-	// const id = request.query.id;
-const id=0;
+	// First get the person's prof
+	// const prof = request.query.prof;
+const prof=0;
 
-	// use a helper function to query the DB, and provide a callback for when it's done
-	getPersonFromDb(id, function(error, result) {
+	// use a helper function to query the DB, and provprofe a callback for when it's done
+	getPersonFromDb(prof, function(error, result) {
 		// This is the callback function that will be called when the DB is done.
 		// The job here is just to send it back.
 
@@ -38,8 +39,8 @@ const id=0;
 // This function gets a person from the DB.
 // By separating this out from the handler above, we can keep our model
 // logic (this function) separate from our controller logic (the getPerson function)
-function getPersonFromDb(id, callback) {
-	console.log("Getting person from DB with id: " + id);
+function getPersonFromDb(prof, callback) {
+	console.log("Getting person from DB with prof: " + prof);
 
 	// Set up the SQL that we will use for our query. Note that we can make
 	// use of parameter placeholders just like with PHP's PDO.
@@ -47,9 +48,9 @@ function getPersonFromDb(id, callback) {
 
 	// We now set up an array of all the parameters we will pass to fill the
 	// placeholder spots we left in the query.
-	const params = [id];
+	const params = [prof];
 
-	// This runs the query, and then calls the provided anonymous callback function
+	// This runs the query, and then calls the provprofed anonymous callback function
   // with the results.
   // the second pramitor is params
 	pool.query(sql, function(err, result) {
@@ -73,3 +74,42 @@ function getPersonFromDb(id, callback) {
 	});
 
 } // end of getPersonFromDb
+
+function queryProf(request, response) {
+	// First get the person's prof
+	const prof = request.query.prof;
+const prof=0;
+
+	// use a helper function to query the DB, and provprofe a callback for when it's done
+	getProfFromDb(prof, function(error, result) {
+		
+		if (error || result == null || result.length == 0) {
+			response.status(500).json({success: false, data: error});
+		} else {
+			const person = result;
+			response.status(200).json(person);
+		}
+	});
+}
+
+function getPerofFromDb(prof, callback) {
+	console.log("Getting prof from DB with prof: " + prof);
+
+	const sql = "SELECT * FROM player WHERE first_prof LIKE $1::text or second_prof LIKE $1::text ";
+
+	const params = [prof];
+
+	pool.query(sql,params, function(err, result) {
+	
+		if (err) {
+			console.log("Error in query: ")
+			console.log(err);
+			callback(err, null);
+		}
+
+		console.log("Found result: " + JSON.stringify(result.rows));
+
+		callback(null, result.rows);
+	});
+
+}// end of getProfFromDb

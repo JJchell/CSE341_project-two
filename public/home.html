@@ -46,13 +46,20 @@
     </script>
 
 <script>
-  function grab_info(){
+  function grab_prof(){
 console.log('checkout run');
+  data={};
+   const name= $("#professions").attr("name"); 
+   const value= $("#professions").val();
+   data[name]=value;
+  
+
 $.ajax({
   url: '/info',
   type: 'GET',
   dataType: 'json', //will parse json into javascript object
   //callback called when suceed
+  data:data,
   success: (data) => {
     console.log('ajax success!', data);
       player ="";
@@ -128,7 +135,7 @@ $.ajax({
       <form>
         <label for="professions">Choose a Profession:</label>
 
-        <select name="professions" id="professions">
+        <select name="prof" id="professions">
           <option value="none">-</option>
           <option value="herbalism">Herbalism</option>
           <option value="mining">Mining</option>
@@ -143,7 +150,7 @@ $.ajax({
           <option value="tailoring">Tailoring</option>
         </select>
 
-        <input type="button" value="results" class="getBtn" onclick="grab_prof()">
+        <input type="button" value="results" class="getBtn" onchange="grab_prof()">
 
       </form>
     
