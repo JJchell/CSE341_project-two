@@ -55,8 +55,8 @@ console.log('checkout run');
   
 
 $.ajax({
-  url: '/info',
-  type: 'GET',
+  url: '/prof',
+  type: 'POST',
   dataType: 'json', //will parse json into javascript object
   //callback called when suceed
   data:data,
@@ -135,25 +135,26 @@ $.ajax({
       <form>
         <label for="professions">Choose a Profession:</label>
 
-        <select name="prof" id="professions">
+        <select name="prof" id="professions" onchange="grab_prof()">
           <option value="none">-</option>
-          <option value="herbalism">Herbalism</option>
-          <option value="mining">Mining</option>
-          <option value="skinning">Skinning</option>
-          <option value="alchemy">Alchemy</option>
-          <option value="blacksmithing">Blacksmithing</option>
-          <option value="enchanting">Enchanting</option>
-          <option value="engineering">Engineering</option>
-          <option value="inscription">Inscription</option>
-          <option value="jewelcrafting">Jewelcrafting</option>
-          <option value="leatherworking">Leatherworking</option>
-          <option value="tailoring">Tailoring</option>
+          <option value="Herbalism">Herbalism</option>
+          <option value="Mining">Mining</option>
+          <option value="Skinning">Skinning</option>
+          <option value="Alchemy">Alchemy</option>
+          <option value="Blacksmithing">Blacksmithing</option>
+          <option value="Enchanting">Enchanting</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Inscription">Inscription</option>
+          <option value="Jewel Crafting">Jewel Crafting</option>
+          <option value="Leather Working">Leather Working</option>
+          <option value="Tailoring">Tailoring</option>
         </select>
 
-        <input type="button" value="results" class="getBtn" onchange="grab_prof()">
+        <input type="button" value="results" class="getBtn">
 
       </form>
     
       <div id="results"></div>
+      <div id="resultsProf"></div>
 </body>
 </html>

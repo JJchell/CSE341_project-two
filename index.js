@@ -8,11 +8,12 @@ const pool = new Pool({connectionString: connectionString});
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
+  .use(express.urlencoded({extended:true}))//support url encoded bodies
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/info', queryInfo)
-  .get('/prof',queryProf)
+  .post('/prof',queryProf)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
@@ -77,8 +78,7 @@ function getPersonFromDb(prof, callback) {
 
 function queryProf(request, response) {
 	// First get the person's prof
-	const prof = request.query.prof;
-const prof=0;
+	const prof = request.body.prof;
 
 	// use a helper function to query the DB, and provprofe a callback for when it's done
 	getProfFromDb(prof, function(error, result) {
@@ -92,7 +92,7 @@ const prof=0;
 	});
 }
 
-function getPerofFromDb(prof, callback) {
+function getProfFromDb(prof, callback) {
 	console.log("Getting prof from DB with prof: " + prof);
 
 	const sql = "SELECT * FROM player WHERE first_prof LIKE $1::text or second_prof LIKE $1::text ";

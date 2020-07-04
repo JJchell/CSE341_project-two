@@ -2,7 +2,7 @@ body {
     width: 100%;
     height: auto;
     background-image: url("images/4.jpeg");
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: cover;
 	background-color: lightgray;
 }
