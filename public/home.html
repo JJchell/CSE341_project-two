@@ -9,8 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="main.css">
     <script>
-        function grab_info()
-    {
+        function grab_info(){
       console.log('checkout run');
       $.ajax({
         url: '/info',
@@ -42,9 +41,45 @@
         }//sucess data call
       });//ajax function call
       //CART CLICK AJAX END
-    }//cartPopup on click
+    }
 
     </script>
+
+<script>
+  function grab_info(){
+console.log('checkout run');
+$.ajax({
+  url: '/info',
+  type: 'GET',
+  dataType: 'json', //will parse json into javascript object
+  //callback called when suceed
+  success: (data) => {
+    console.log('ajax success!', data);
+      player ="";
+
+    $.each(data, function (index, value) {
+      player += "<h2>";
+      player += this.player_name;
+      player += ", ";
+      player += this.realm;
+      player += ", ";
+      player += this.race;
+      player += ", ";
+      player += this.class_type;
+      player += ", ";
+      player += this.faction;
+      player += ", ";
+      player += this.first_prof;
+      player += ", ";
+      player += this.second_prof;
+      player += "</h2>";
+    });
+    $('#results').html(player)
+  }
+});
+}
+
+</script>
 </head>
 <body>
     <form action="" method="post">
@@ -108,10 +143,10 @@
           <option value="tailoring">Tailoring</option>
         </select>
 
-        <input type="button" value="professionResults" class="getBtn" onclick="grab_info()">
+        <input type="button" value="results" class="getBtn" onclick="grab_prof()">
 
       </form>
-      <div id="professionResults"></div>
+    
       <div id="results"></div>
 </body>
 </html>
