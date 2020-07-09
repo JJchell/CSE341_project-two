@@ -27,8 +27,11 @@ h1 {
     border-radius: 6px;
     padding: 10px 26px;
     color: white;
+    border: none;
 }
 
 .getBtn:hover {
     background-color: #8c1516;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    border: none;
   }
