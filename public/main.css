@@ -17,3 +17,17 @@ h2 {
 font-size: 1.5vw;
 color: #8c1516;
 }
+
+h1 {
+    font-size: 1.5vw;
+}
+
+.button {
+    background-color: #162c57;
+    border-radius: 4px;
+    padding: 12px 28px;
+}
+
+.button:hover {
+    background-color: #8c1516;
+  }
