@@ -19,15 +19,15 @@ color: #8c1516;
 }
 
 h1 {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
-.button {
+button {
     background-color: #162c57;
     border-radius: 4px;
     padding: 12px 28px;
 }
 
-.button:hover {
+button:hover {
     background-color: #8c1516;
   }
