@@ -17,9 +17,9 @@ express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   // adding a log in start *****************************************
-	app.post('/login', login);
-	app.post('/logout');
-	app.get('/getServerTime');
+	// app.post('/login', login);
+	// app.post('/logout');
+	// app.get('/getServerTime');
   // adding a log in stop ******************************************
 
 
@@ -121,18 +121,18 @@ function getProfFromDb(prof, callback) {
 }
 
 // adding a log in start *****************************************
-function login(req, res) {
-	var username = req.body.username;
-	var password = req.body.password;
+// function login(req, res) {
+// 	var username = req.body.username;
+// 	var password = req.body.password;
 
-	if(username === 'admin' && password === 'password') {
-		var result = {success: true};
-		res.json(result);
-	} else {
-		var result = {success: false};
-		res.json(result);
-	}
+// 	if(username === 'admin' && password === 'password') {
+// 		var result = {success: true};
+// 		res.json(result);
+// 	} else {
+// 		var result = {success: false};
+// 		res.json(result);
+// 	}
 
-}
+// }
 // adding a log in stop ******************************************
 
