@@ -67,17 +67,17 @@ $.ajax({
     $.each(data, function (index, value) {
       player += "<h2>";
       player += this.player_name;
-      player += ", ";
+      player += ",  ";
       player += this.realm;
-      player += ", ";
+      player += ",  ";
       player += this.race;
-      player += ", ";
+      player += ",  ";
       player += this.class_type;
-      player += ", ";
+      player += ",  ";
       player += this.faction;
-      player += ", ";
+      player += ",  ";
       player += this.first_prof;
-      player += ", ";
+      player += ",  ";
       player += this.second_prof;
       player += "</h2>";
     });
@@ -86,20 +86,58 @@ $.ajax({
 });
 }
 
+function login(){
+console.log('checkout run');
+  data={};
+   const name= $("#username").attr("name"); 
+   const value= $("#username").val();
+   data[name]=value;
+   const name1= $("#password").attr("name"); 
+   const value1= $("#password").val();
+   data[name1]=value1;
+  
+
+$.ajax({
+  url: '/login',
+  type: 'POST',
+  dataType: 'json', //will parse json into javascript object
+  //callback called when suceed
+  data:data,
+  success: (data) => {
+    console.log('ajax success!', data);
+      message ="";
+      if (data.login == true){
+        message = "You are loged in.";
+        // $("#loginForm").hide();
+        $("#loginForm").fadeOut(3000);
+      }
+      else {
+        message = "Log in failed";
+      }
+
+    $('#auth').html(message)
+  }
+});
+}
+function logout (){
+  $("#loginForm").show();
+}
+
 </script>
 </head>
 <body>
   <!-- adding a log in start ***************************************** -->
-  <div>
-    <input type="text" id="username" placeholder="username"><br>
-    <input type="password" id="password" placeholder="password"><br>
-    <button onclick="login();">Log in</button>
-    <button onclick="logout();">Log out</button><br>
-    <br>
-    <button onclick="getServerTime()">Get server time</button>
+  <div id='loginForm'>
+    <h1 id='auth'></h1>
+    <input name="username" type="text" id="username" placeholder="username"><br>
+    <input name="password" type="password" id="password" placeholder="password"><br><br>
+    <button class="getBtn" onclick="login();">Log In</button><br>
+    
+    <!-- <button onclick="getServerTime()">Get server time</button> -->
     <div id="status"></div>
-  </div>
-  <!-- adding a log in stop ****************************************** -->
+  </div><br>
+  <button class="getBtn" onclick="logout();">Log Out</button><br>
+  <!-- adding a log in end ******************************************* -->
     <form action="" method="post">
         <h1>Click the "See All" button to see all Character,<br>
           or choose a professions from the dropdown menue.</h1>

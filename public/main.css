@@ -25,7 +25,8 @@ h1 {
 .getBtn {
     background-color: #162c57;
     border-radius: 6px;
-    padding: 10px 26px;
+    padding: 5px 5px;
+    width: 75px;
     color: white;
     border: none;
 }
@@ -35,3 +36,5 @@ h1 {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     border: none;
   }
+
+  
