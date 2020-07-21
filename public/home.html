@@ -108,8 +108,10 @@ $.ajax({
       message ="";
       if (data.login == true){
         message = "You are loged in.";
-        // $("#loginForm").hide();
+        $("#password").val("");
+        $("#username").val("");
         $("#loginForm").fadeOut(3000);
+        $("#logout").show();
       }
       else {
         message = "Log in failed";
@@ -121,6 +123,7 @@ $.ajax({
 }
 function logout (){
   $("#loginForm").show();
+  $("#logout").hide();
 }
 
 </script>
@@ -131,37 +134,17 @@ function logout (){
     <h1 id='auth'></h1>
     <input name="username" type="text" id="username" placeholder="username"><br>
     <input name="password" type="password" id="password" placeholder="password"><br><br>
-    <button class="getBtn" onclick="login();">Log In</button><br>
+    <button  class="getBtn" onclick="login();">Log In</button><br>
     
     <!-- <button onclick="getServerTime()">Get server time</button> -->
     <div id="status"></div>
   </div><br>
-  <button class="getBtn" onclick="logout();">Log Out</button><br>
+  <button hidden id="logout" class="getBtn" onclick="logout();">Log Out</button><br>
   <!-- adding a log in end ******************************************* -->
     <form action="" method="post">
         <h1>Click the "See All" button to see all Character,<br>
           or choose a professions from the dropdown menue.</h1>
-        <!-- <div class="checkbox">
-          <label><input type="checkbox" value="player_name">Player Name</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="realm">Realm</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="race">Race</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="class_type">Class Type</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="faction">Faction</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="first_prof">First Professions</label>
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" value="second_prof">Second Professions</label>
-        </div> -->
+
 
           <input type="button" value="See All" class="getBtn" onclick="grab_info()"><br><br>
 
